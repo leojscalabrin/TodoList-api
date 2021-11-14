@@ -1,0 +1,20 @@
+{
+  "name": "TodoList-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/leojscalabrin/TodoList-api.git",
+  "author": "Leonardo Scalabrin <leojscalabrin@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
