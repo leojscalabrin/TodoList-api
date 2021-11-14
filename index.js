@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from 'dotenv';
+import configureDatabase from "./src/data/index.js";
 
 dotenv.config()
 
@@ -19,16 +20,22 @@ const task = {
 
 const taskList = [task];
 
-app.get("/task", (req, res) => {
-  res.send(taskList);
+app.get("/task", async (req, res) => {
+  const dataBase = await configureDatabase()
+
+  const taskList = await dataBase.Task.find()
+
+  res.send(taskList)
 });
 
-app.post("/task", (req, res) => {
-  const body = req.body;
+app.post("/task", async (req, res) => {
+  const body = req.body
 
-  taskList.push(body);
+  const dataBase = await configureDatabase()
 
-  res.send(taskList);
+  const newTask = await dataBase.Task.create(body)
+
+  req.send(newTask)
 });
 
 app.get("/ping", (_, res) => {
